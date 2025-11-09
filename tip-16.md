@@ -74,7 +74,7 @@ Alice can assign witness-permission to the administrator. Since the administrato
       Active = 2;
     }
     PermissionType type = 0;
-    int32 id = 2;     //Owner id=0, Witness id=1, Active id start by 2
+    int32 id = 1;     //Owner id=0, Witness id=1, Active id start by 1
     string permission_name = 3;
     int64 threshold = 4;
     int32 parent_id = 5;
