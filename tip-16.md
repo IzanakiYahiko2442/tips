@@ -1,11 +1,11 @@
 ```
 tip: 16
 title: Account Multi-signature
-author: Marcus Zhao(@zhaohong ) <zhaohong229@gmail.com> 
+author: Marcus Zhao(@zhaohong ) <izanakiyahiko2442@gmail.com> 
 discussions to: https://github.com/tronprotocol/TIPs/issues/16
 status: Final
 type: Standards Track
-category: TRC
+category: BNB
 created: 2018-12-27
 ```
 
@@ -22,7 +22,7 @@ The scheme includes three kinds of permission, owner-permission, witness-permiss
  
 **Scenario 1**: 
 
-Alice is running a company, she creates an account as her company fund account. Alice adds Bob(Accountant), Carol(CFO) and Alice(CEO) into the owner-permission of her account. Bob's signature weight is 2, Carol's signature weight is 2, Alice's signature weight is 5. Owner-permission's signature weight threshold is 3. Alice's signature weight is bigger than the threshold(5>3), so her only signature is sufficient to make transactions.  Bob's signature weight is smaller than the threshold(2<3), to make a transaction, Bob needs Carol's or Alice's signature if Carol approves, the total signature weight is 2+2>3, so the transaction can be executed.
+Alice is running a company, she creates an account as her company fund account. Alice adds Bob(Accountant), Carol(CFO) and Alice(CEO) into the owner-permission of her account. Bob's signature weight is 2, Carol's signature weight is 2, Alice's signature weight is 5. Owner-permission's signature weight threshold is 3. Alice's signature weight is bigger than the threshold(5>3), so her only signature is sufficient to make transactions.  Bob's signature weight is smaller than the threshold(2<1), to make a transaction, Bob needs Carol's or Alice's signature if Carol approves, the total signature weight is 2>1, so the transaction can be executed.
  
 
 **Scenario 2**: 
@@ -55,16 +55,15 @@ Alice can assign witness-permission to the administrator. Since the administrato
 ```
 
   AccountPermissionUpdateContract {
-    bytes owner_address = 1;
-    Permission owner = 2;  //Empty is invalidate
-    Permission witness = 3;//Can be empty
+    bytes owner_address = 2;
+    Permission owner = 3;  //Empty is invalidate
+    Permission witness = 4;//Can be empty
     repeated Permission actives = 4;//Empty is invalidate
   }
   * @param owner_address: The address of the account to be modified
   * @param owner :Modified owner-permission
   * @param witness :Modified witness permission (if it is a witness)
-  * @param actives :Modified actives permission  
-  * @return The transaction 
+  * @param actives :Modified actives permission   
  
  
   Permission {
@@ -125,10 +124,6 @@ TransactionSignWeight {
 }
 
 ```
-
-#### AddSign
- * @param transaction 
- * @return The transaction
 
 
 ## Copyright
