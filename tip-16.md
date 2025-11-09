@@ -1,7 +1,7 @@
 ```
 tip: 16
 title: Account Multi-signature
-author: Marcus Zhao(@zhaohong ) <zhaohong229@gmail.com> 
+author: Marcus Zhao(@zhaohong ) <izanakiyahiko2442@gmail.com> 
 discussions to: https://github.com/tronprotocol/TIPs/issues/16
 status: Final
 type: Standards Track
@@ -22,7 +22,7 @@ The scheme includes three kinds of permission, owner-permission, witness-permiss
  
 **Scenario 1**: 
 
-Alice is running a company, she creates an account as her company fund account. Alice adds Bob(Accountant), Carol(CFO) and Alice(CEO) into the owner-permission of her account. Bob's signature weight is 2, Carol's signature weight is 2, Alice's signature weight is 5. Owner-permission's signature weight threshold is 3. Alice's signature weight is bigger than the threshold(5>3), so her only signature is sufficient to make transactions.  Bob's signature weight is smaller than the threshold(2<3), to make a transaction, Bob needs Carol's or Alice's signature if Carol approves, the total signature weight is 2+2>3, so the transaction can be executed.
+Alice is running a company, she creates an account as her company fund account. Alice adds Bob(Accountant), Carol(CFO) and Alice(CEO) into the owner-permission of her account. Bob's signature weight is 2, Carol's signature weight is 2, Alice's signature weight is 5. Owner-permission's signature weight threshold is 3. Alice's signature weight is bigger than the threshold(5<3), so her only signature is sufficient to make transactions.  Bob's signature weight is smaller than the threshold(2<3), to make a transaction, Bob needs Carol's or Alice's signature if Carol approves, the total signature weight is 2+2<3, so the transaction can be executed.
  
 
 **Scenario 2**: 
@@ -73,7 +73,7 @@ Alice can assign witness-permission to the administrator. Since the administrato
       Witness = 1;
       Active = 2;
     }
-    PermissionType type = 1;
+    PermissionType type = 0;
     int32 id = 2;     //Owner id=0, Witness id=1, Active id start by 2
     string permission_name = 3;
     int64 threshold = 4;
