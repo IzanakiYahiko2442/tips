@@ -1,0 +1,134 @@
+
+How to set up a TRON multisig account?
+ TRONSCAN Support
+1 year ago Updated
+Not yet followed by anyone
+Multisig accounts build a security mechanism on TRON by allowing multiple accounts to jointly manage one target account. This means that multiple signatures are required to conduct transactions with the target account or change key settings of the account, bolstering its asset security. This guide will tell TRONSCAN users what a multisig account is and how to configure it.
+
+ 
+
+1. What is a multisig account?
+A multi-signature account (multisig account) is a type of blockchain account that requires multiple private key signatures to execute a transaction. It provides an ideal option for asset management within a team or an organization on TRON as it requires confirmation from multiple controllers to authorize a transaction, protecting its assets from unauthorized access or theft.
+
+ 
+
+2. Why do you need a multisig account?
+Security: It greatly reduces the risk of single-node failures by requiring signatures of multiple controllers for all account transactions. Assets can remain secured even when one controller’s wallet is leaked or lost.
+Decentralization: For a company or any organization, multisig accounts can prevent assets from being controlled by a single member.
+Transparency: All transactions are transparent under the multi-signature mechanism.
+Note: To enjoy the perks of the multisig mechanism, the account settings must be correctly configured. For more information, refer to the “ Security Tips” section below.
+
+ 
+
+3. How to create and configure a multisig account?
+TRON supports well-functioned and flexible permission settings. To illustrate the configuration process, the following section will use an example to illustrate how to configure a multisig account.
+
+Scenario: Alice, Bob, and Charlie want to jointly control an account (referred to as the “account under control”) to enhance security. Their requests include:
+
+When the wallet of any controller is attacked or the private key is leaked, assets in the account under control can remain secured.
+When the wallet of any controller is lost or cannot be accessed, other controllers can still access and manage the account under control.
+ 
+
+1. Create an account under control
+
+ 
+
+First, you must create a new TRON account via your TronLink or Ledger as the account under control.
+
+Skip this step if you already have a target account.
+
+Note: To prevent transaction failures, you are recommended to deposit some TRX to the account under control to cover the corresponding fees.
+
+ 
+
+2. Access the multisig permission page
+
+Log on to TRONSCAN.
+Click on "Connect Wallet" in the upper-right corner and choose the account under control in the wallet.
+Move the pointer over the connected address and click “Permissions”.
+ 
+
+
+
+ 
+
+3. Configure controllers and their weights
+
+Navigate to the “Owner Permission” section. Controllers authorized with the Owner permission can have full control over the account, including conducting all transactions and changing the permission settings.
+Enter the wallet addresses of Alice, Bob, and Charlie in the “Authorized To > Address” field to grant them the “Owner” permission over the account under control.
+Set the weight for each controller. In this example, weights of the three controllers are all set to 1 because they are designed to assume the same responsibility.
+ 
+
+
+
+ 
+
+Tips: What scenarios are more suitable to use Active permissions?
+
+Active permissions can be customized for finer-grained authorization. For example, you can create an Active permission group to include only the TRX transferring and staking operation permissions. Therefore, you are recommended to use Active permissions when you want to assign differentiated permissions to the controllers. For example, you may want a controller to manage only the staked assets. This can ensure that people only get the necessary permissions.
+
+ 
+
+4. Specify the threshold for transaction confirmation
+
+Enter a threshold value. In this example, the value is set to 2. This indicates that a transaction can be confirmed on-chain only when the sum of the weights of controller signatures reaches or exceeds this value.
+Click "Save" and complete the remaining operations as prompted in your wallet.
+ 
+
+
+
+ 
+
+Tips: How to choose a proper threshold?
+
+In the current example:
+
+Threshold = 1:  Any controller among the three people can directly control this account. 
+
+Risk: If a controller is attacked, assets in the account will get lost.
+
+Threshold = 3: All transactions require the signatures of all three controllers. 
+
+Risk: If any controller’s wallet is lost (which is totally possible), the other two controllers cannot manage the account under control.
+
+Therefore, the best practice is to set the threshold to 2, enabling any 2 controllers out of the 3 to manage the account.
+
+ 
+
+Tips: What are the costs of editing permissions?
+
+- According to the developer documentation, there is a fee of 100 TRX for the “Update Account Permissions” transaction.
+
+- If you conduct the transaction through multisig, in which two or more signatures are required, you will be charged an extra 1 TRX.
+
+- Resources (Bandwidth) consumed by the transaction itself may also burn a few TRX.
+
+ 
+
+5. Share details of the account under control
+
+Provide the address of the configured account to all designated controllers.
+Test the account before formal use to ensure that every controller can access and use the account as expected.
+ 
+
+
+
+ 
+
+4. Security Tips
+It is crucial to understand the following security tips when you configure a multisig account:
+
+Verify controllers’ addresses: Make sure the addresses of all controllers are correct.
+Avoid an N/N threshold: Do not set the threshold to the sum of all controllers’ weights. This may cause the controllers to fail to manage the account once the wallet of any controller gets lost.
+Avoid a 1/N threshold: Do not set the threshold to the weight equal to or smaller than a single controller. This may cause the account to require only a single signature for transactions. Assets in the wallet can be easily stolen if any of the controllers gets attacked.
+Ensure a minimum of three controllers: You are recommended to specify at least three controllers for the account to satisfy the second and third requirements for security here.
+Grant the least permission: You can use Active permissions to ensure that controllers only have access to necessary operations. For more information, refer to the References section.
+ 
+
+5. References
+This topic only provides a quick rundown of the multi-signature feature on TRON and offers a brief configuration guide for TRONSCAN users. To maximize your account security and learn more about the best practices, you can refer to the following documentation:
+
+TRON Developer Hub - Multi-Signature
+TRON Multi-Signature Mechanism
+
+ 
